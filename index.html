@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #ffcaf8;
+      background-image: radial-gradient(rgba(236, 137, 181, 0.3) 1.5px, transparent 1.5px);
+      background-size: 30px 30px;
+      background-position: center;
+    }
+    .container {
+      position: relative;
+      width: 430px;
+      height: 630px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .portada,
+    .decoracion-texto {
+      transition: transform 1s ease, opacity 1s ease;
+    }
+    .portada.caida,
+    .decoracion-texto.caida {
+      transform: translateY(150%) rotate(15deg);
+      opacity: 0;
+    }
+    .portada {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      overflow: hidden;
+      z-index: 3;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .portada img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .carta {
+      background-image: url(fresitas.png);
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      border: 1px solid #ddd;
+      padding: 30px 25px 40px;
+      text-align: justify;
+      font-size: 13px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 1;
+    }
+    .carta::before {
+      content: "✧";
+      display: block;
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #888;
+    }
+    .titulo {
+      text-align: center;
+      font-size: 11px;
+      margin-bottom: 15px;
+      color: #555;
+    }
+    .lazo {
+      position: absolute;
+      top: -25px;
+      right: 20px;
+      width: 60px;
+    }
+    .decoracion-texto {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      color: #ec89b5;
+      font-weight: bold;
+      font-family: 'Comic Sans MS', cursive;
+      z-index: 4;
+      cursor: pointer;
+      text-shadow: 1px 1px 2px #fff;
+    }
+    .boton-reiniciar {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      background-color: #f16c80;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-family: 'Comic Sans MS', cursive;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+    .boton-reiniciar.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="carta">
+      <div class="titulo">CON CARIÑO PARA XADEN <br> 我的王子 </div>
+      <p>
+        Hoy quiero escribirte estas palabras desde lo más profundo de mi corazón, porque a veces las emociones no caben solo en un abrazo o una mirada. Eres lo más bello que tengo en esta vida, mi amor, mi niño, mi cielo. Desde que llegaste a mi vida, todo cambió. Me llenaste de una felicidad que no se puede describir con palabras, de un amor tan puro y tan fuerte que cada día me siento más agradecida por tenerte conmigo. Eres mi mayor bendición, mi razón de sonreír, mi fuerza en los días difíciles y mi paz cuando todo está bien.
+      </p>
+      <p>
+        Cada vez que te miro, cada vez que miro tu sonrisa, siento que no necesito nada más. No hay lugar en el mundo donde prefiera estar que a tu lado. Tu voz es mi canción favorita, tu existencia es mi milagro. Gracias, mi amor, por existir.
+      </p>
+      <p>
+        Gracias por llenar mi vida de sentido. Nunca lo olvides: eres amado con cada latido de mi corazón.
+      </p>
+      <p style="text-align: center; margin-top: 1em;"><em>Atte. Sabrina</em></p>
+    </div>
+    <div class="portada" id="portada" onclick="ocultarImagen()" role="button" aria-label="Abrir carta">
+      <img src="ositos.png" alt="Imagen portada" />
+    </div>
+    <div class="decoracion-texto" id="decoracion"></div>
+    <button class="boton-reiniciar" id="btnReset" onclick="reiniciar()">♡ Reiniciar ♡</button>
+  </div>
+  <script>
+    function ocultarImagen() {
+      document.getElementById('portada').classList.add('caida');
+      document.getElementById('decoracion').classList.add('caida');
+      document.getElementById('btnReset').classList.add('visible');
+    }
+    function reiniciar() {
+      document.getElementById('portada').classList.remove('caida');
+      document.getElementById('decoracion').classList.remove('caida');
+      document.getElementById('btnReset').classList.remove('visible');
+    }
+  </script>
+</body>
+</html>
